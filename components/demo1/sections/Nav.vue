@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="flex text-lg items-center justify-between container mx-auto p-5 gap-x-3 md:static fixed top-0 inset-x-0 backdrop-blur-md z-10 duration-300"
+    class="flex text-lg items-center justify-between container mx-auto p-5 gap-x-3 md:static fixed top-0 inset-x-0 backdrop-blur-md z-10 duration-300 md:!bg-transparent md:!text-[var(--primary-text-color)]"
     :class="{
       'bg-[var(--primary-text-color)] text-[var(--primary-accent-2)]': darker,
       'bg-[var(--primary-color)]': !darker,
