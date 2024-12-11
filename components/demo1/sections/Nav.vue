@@ -14,7 +14,7 @@
     >
       Etech.
     </h1>
-    <section class="hidden md:flex items-center gap-x-2">
+    <section class="hidden lg:flex items-center gap-x-2">
       <button
         v-for="(label, idx) in ['Courses', 'Teachers', 'Offers', 'Contact']"
         class="flex items-center gap-x-1 p-2 px-3 animate__animated animate__fadeInUp rounded-md hover:bg-[rgba(var(--primary-text-color-rgb),0.05)] duration-150 cursor-pointer group/menu"
@@ -29,7 +29,7 @@
         />
       </button>
     </section>
-    <section class="hidden md:flex gap-x-2">
+    <section class="hidden lg:flex gap-x-2">
       <Demo1UtilsButton
         v-for="(text, idx) in ['Sign In', 'Free Trial']"
         :key="idx"

@@ -53,7 +53,7 @@
       >
         <img
           src="/demo1/hero.png"
-          class="h-full w-full object-contain"
+          class="max-h-[500px] md:max-h-full h-full w-full object-contain"
           alt=""
         />
       </div>

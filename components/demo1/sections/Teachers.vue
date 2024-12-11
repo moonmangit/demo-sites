@@ -1,14 +1,14 @@
 <template>
   <section
-    class="container mx-auto flex flex-row items-center justify-center py-[30px] md:py-[70px]"
+    class="container mx-auto flex flex-row items-center justify-center py-[30px] md:py-[70px] px-4 md:px-0"
   >
     <main
       ref="contentEl"
-      class="flex flex-col md:flex-row justify-center items-center gap-8"
+      class="flex flex-col md:flex-row justify-center items-center gap-8 text-center md:text-left"
     >
       <!-- left -->
-      <div class="space-y-4 px-4">
-        <section>
+      <div class="flex flex-col items-center md:items-start space-y-4 px-4">
+        <section class="space-y-2">
           <h1 class="text-2xl font-bold">
             <span
               class="animate__animated opacity-0 animate__delay-1s"
@@ -16,8 +16,7 @@
                 animate__fadeIn: applyAnimation,
               }"
             >
-              If You Are A Certified Teacher <br />
-              Then
+              If You Are A Certified Teacher Then <br />
             </span>
             <span
               class="text-gradient animate__animated opacity-0"
@@ -40,14 +39,14 @@
             Beatae, porro!
           </p>
         </section>
-        <section>
+        <section class="space-y-2">
           <h1
             class="text-2xl font-bold opacity-0 animate__animated animate__delay-1s"
             :class="{ animate__fadeInDown: applyAnimation }"
           >
             Enjoy Many Perks
           </h1>
-          <ul class="grid grid-cols-2 w-fit gap-x-8">
+          <ul class="grid grid-cols-2 mx-auto md:mx-0 w-fit gap-x-8 gap-3">
             <li
               v-for="i in 8"
               :key="i"
