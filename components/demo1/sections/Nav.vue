@@ -61,21 +61,6 @@ const overallDelay = ref(0.8);
 const nav = useDemo1Nav();
 const navEl = ref<HTMLElement | null>(null);
 
-onMounted(() => {
-  setTimeout(() => {
-    // remove all animation classes ex: animate__animated animate__fadeInLeft, ... from all elements
-    const elements = navEl.value?.querySelectorAll("*");
-    elements?.forEach((el) => {
-      el.classList.remove(
-        "animate__animated",
-        "animate__fadeInLeft",
-        "animate__fadeInRight",
-        "animate__fadeInUp"
-      );
-    });
-  }, 1000);
-});
-
 // darker on scroll down
 const darker = ref(false);
 const { y } = useScroll(window, {
