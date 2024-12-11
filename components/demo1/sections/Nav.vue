@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="flex text-lg items-center justify-between container mx-auto p-5 gap-x-3 md:static fixed top-0 inset-x-0 backdrop-blur-md z-10 duration-300 md:!bg-transparent md:!text-[var(--primary-text-color)]"
+    class="flex text-lg items-center justify-between container mx-auto px-5 py-3 gap-x-3 md:static fixed top-0 inset-x-0 backdrop-blur-md z-10 duration-300 md:!bg-transparent md:!text-[var(--primary-text-color)]"
     :class="{
       'bg-[var(--primary-text-color)] text-[var(--primary-accent-2)]': darker,
       'bg-[var(--primary-color)]': !darker,
@@ -14,16 +14,19 @@
     >
       Etech.
     </h1>
-    <section class="hidden md:flex items-center gap-x-6">
+    <section class="hidden md:flex items-center gap-x-2">
       <button
         v-for="(label, idx) in ['Courses', 'Teachers', 'Offers', 'Contact']"
-        class="flex items-center gap-x-1 animate__animated animate__fadeInUp"
+        class="flex items-center gap-x-1 p-2 px-3 animate__animated animate__fadeInUp rounded-md hover:bg-[rgba(var(--primary-text-color-rgb),0.05)] duration-150 cursor-pointer group/menu"
         :style="{
           animationDelay: `${overallDelay + idx * 0.3}s`,
         }"
       >
         <label for="">{{ label }}</label>
-        <Icon name="mdi:chevron-down" />
+        <Icon
+          name="mdi:chevron-down"
+          class="group-hover/menu:rotate-180 duration-300"
+        />
       </button>
     </section>
     <section class="hidden md:flex gap-x-2">

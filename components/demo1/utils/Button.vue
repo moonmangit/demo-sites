@@ -29,12 +29,30 @@ const props = withDefaults(
 .demo1-button--full-gradient {
   background-image: var(--primary-gradient);
   @apply text-[var(--primary-color)];
+  @apply relative;
+  &:hover {
+    &::after {
+      @apply opacity-60;
+    }
+  }
+  &::after {
+    @apply content-[''] absolute inset-0 blur-lg bg-transparent z-[-2] pointer-events-none duration-300;
+    @apply opacity-0;
+    background-image: var(--secondary-gradient);
+  }
 }
 .demo1-button--outline {
-  @apply border-2;
+  @apply border-2 duration-150;
+  &:hover {
+    @apply border-[var(--primary-accent-1)];
+  }
 }
 .demo1-button--white {
-  @apply bg-[var(--primary-color)];
+  @apply bg-[var(--primary-color)] duration-150;
+
+  &:hover {
+    @apply shadow-xl shadow-[rgba(var(--primary-text-color-rgb),0.125)];
+  }
 
   p {
     background-image: var(--primary-gradient);
