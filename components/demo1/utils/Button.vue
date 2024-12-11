@@ -34,7 +34,16 @@ const props = withDefaults(
   @apply border-2;
 }
 .demo1-button--white {
+  @apply bg-[var(--primary-color)];
+
+  p {
+    background-image: var(--primary-gradient);
+    color: transparent;
+    background-clip: text;
+    @apply font-medium;
+  }
 }
+
 .demo1-button--ghost {
 }
 </style>

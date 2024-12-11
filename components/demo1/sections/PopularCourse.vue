@@ -39,7 +39,7 @@
               4.9
             </span>
           </div>
-          <h1 class="flex-1 whitespace-normal text-lg leading-5 font-bold">
+          <h1 class="flex-1 whitespace-normal text-lg leading-5 font-semibold">
             Web Design & <br />
             Development
           </h1>
@@ -50,7 +50,7 @@
             </span>
           </div>
           <footer class="flex items-center justify-between">
-            <span class="font-bold text-base"> $250.00 </span>
+            <span class="font-medium text-base"> $250.00 </span>
             <span class="flex items-center gap-x-2 font-medium text-sm">
               <img
                 src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D"

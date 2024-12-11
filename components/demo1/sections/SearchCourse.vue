@@ -12,7 +12,7 @@
       >
         <label
           for=""
-          class="flex-1 flex items-center gap-x-1 pl-3 bg-white text-base rounded-xl"
+          class="flex-1 flex items-center gap-x-1 pl-3 bg-white text-base rounded-lg"
         >
           <Icon
             name="mdi:magnify"

@@ -34,6 +34,7 @@
       <NuxtMarquee auto-fill :speed="10">
         <img
           v-for="i in 8"
+          :key="i"
           src="https://pngimg.com/d/microsoft_PNG3.png"
           class="saturate-0 h-[50px] brightness-[3] opacity-80"
           alt=""
