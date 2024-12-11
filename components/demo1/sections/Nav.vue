@@ -1,8 +1,10 @@
 <template>
   <nav
-    class="flex text-lg items-center justify-between container mx-auto px-5 py-3 gap-x-3 md:static fixed top-0 inset-x-0 backdrop-blur-md z-10 duration-300 md:!bg-transparent md:!text-[var(--primary-text-color)]"
+    ref="navEl"
+    class="flex text-lg items-center justify-between container mx-auto px-5 py-3 gap-x-3 md:static fixed top-0 inset-x-0 backdrop-blur-md z-20 duration-300 md:!bg-transparent md:!text-[var(--primary-text-color)]"
     :class="{
-      'bg-[var(--primary-text-color)] text-[var(--primary-accent-2)]': darker,
+      'bg-[var(--primary-text-color)] text-[var(--primary-accent-2)] rounded-b-3xl':
+        darker,
       'bg-[var(--primary-color)]': !darker,
     }"
   >
@@ -46,6 +48,7 @@
       :style="{
         animationDelay: `${overallDelay}s`,
       }"
+      @click.prevent="nav.open()"
     >
       <Icon name="mdi:menu" />
     </button>
@@ -54,6 +57,24 @@
 
 <script lang="ts" setup>
 const overallDelay = ref(0.8);
+
+const nav = useDemo1Nav();
+const navEl = ref<HTMLElement | null>(null);
+
+onMounted(() => {
+  setTimeout(() => {
+    // remove all animation classes ex: animate__animated animate__fadeInLeft, ... from all elements
+    const elements = navEl.value?.querySelectorAll("*");
+    elements?.forEach((el) => {
+      el.classList.remove(
+        "animate__animated",
+        "animate__fadeInLeft",
+        "animate__fadeInRight",
+        "animate__fadeInUp"
+      );
+    });
+  }, 1000);
+});
 
 // darker on scroll down
 const darker = ref(false);
@@ -68,4 +89,4 @@ const { y } = useScroll(window, {
 });
 </script>
 
-<style></style>
+<style scoped></style>
