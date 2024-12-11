@@ -6,27 +6,52 @@
       'bg-[var(--primary-color)]': !darker,
     }"
   >
-    <h1 class="font-bold text-2xl">Etech.</h1>
-    <section class="hidden md:flex items-center gap-x-2">
+    <h1
+      class="font-bold text-2xl animate__animated animate__fadeInLeft"
+      :style="{
+        animationDelay: `${overallDelay}s`,
+      }"
+    >
+      Etech.
+    </h1>
+    <section class="hidden md:flex items-center gap-x-6">
       <button
-        v-for="label in ['Courses', 'Teachers', 'Offers', 'Contact']"
-        class="flex items-center gap-x-1"
+        v-for="(label, idx) in ['Courses', 'Teachers', 'Offers', 'Contact']"
+        class="flex items-center gap-x-1 animate__animated animate__fadeInUp"
+        :style="{
+          animationDelay: `${overallDelay + idx * 0.3}s`,
+        }"
       >
         <label for="">{{ label }}</label>
         <Icon name="mdi:chevron-down" />
       </button>
     </section>
     <section class="hidden md:flex gap-x-2">
-      <Demo1UtilsButton title="Sign In" variant="outline" />
-      <Demo1UtilsButton title="Free Trial" variant="full-gradient" />
+      <Demo1UtilsButton
+        v-for="(text, idx) in ['Sign In', 'Free Trial']"
+        :key="idx"
+        :title="text"
+        :variant="idx === 0 ? 'outline' : 'full-gradient'"
+        class="animate__animated animate__fadeInUp"
+        :style="{
+          animationDelay: `${overallDelay + idx * 0.3}s`,
+        }"
+      />
     </section>
-    <button class="flex md:hidden text-2xl">
+    <button
+      class="flex md:hidden text-2xl animate__animated animate__fadeInRight"
+      :style="{
+        animationDelay: `${overallDelay}s`,
+      }"
+    >
       <Icon name="mdi:menu" />
     </button>
   </nav>
 </template>
 
 <script lang="ts" setup>
+const overallDelay = ref(0.8);
+
 // darker on scroll down
 const darker = ref(false);
 const { y } = useScroll(window, {

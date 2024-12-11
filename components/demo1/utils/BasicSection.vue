@@ -1,15 +1,35 @@
 <template>
   <div
-    class="basic-section flex flex-col items-center justify-center py-[50px]"
+    ref="sectionEl"
+    class="basic-section flex flex-col items-center justify-center py-[50px] overflow-hidden"
     :class="[`basic-section--${props.content.variant}`]"
   >
     <header
       class="flex flex-col gap-3 container mx-auto max-w-[80dvw] md:max-w-[60dvw] text-center"
       :class="[props.headerClass]"
     >
-      <h1 class="font-bold text-2xl">{{ content.title }}</h1>
+      <h1
+        class="font-bold text-2xl animate__animated opacity-0"
+        :class="{
+          animate__fadeInUp: applyAnimation,
+        }"
+      >
+        {{ content.title }}
+      </h1>
       <slot name="subtitle">
-        <p v-if="content.description" class="line-clamp-3" :class="[pClass]">
+        <p
+          v-if="content.description"
+          class="line-clamp-3 animate__animated opacity-0"
+          :class="[
+            pClass,
+            {
+              animate__fadeInUp: applyAnimation,
+            },
+          ]"
+          :style="{
+            animationDelay: '0.2s',
+          }"
+        >
           {{ content.description }}
         </p>
       </slot>
@@ -28,6 +48,21 @@ const props = defineProps<{
   headerClass?: string;
   pClass?: string;
 }>();
+
+const applyAnimation = ref(false);
+const sectionEl = ref<HTMLElement | null>(null);
+useIntersectionObserver(
+  sectionEl,
+  ([entry], observer) => {
+    if (entry.isIntersecting) {
+      applyAnimation.value = true;
+      observer.unobserve(entry.target);
+    }
+  },
+  {
+    threshold: 0.4,
+  }
+);
 </script>
 
 <style scoped>

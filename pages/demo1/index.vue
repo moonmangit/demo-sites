@@ -96,6 +96,7 @@
 .demo1 {
   --primary-color: #faf5fc;
   --primary-text-color: #201635;
+  --primary-text-color-rgb: 32, 22, 53;
   --primary-accent-1: #b377ff;
   --primary-accent-1-rgb: 179, 119, 255;
   --primary-accent-2: #e288c2;

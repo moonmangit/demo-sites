@@ -8,6 +8,7 @@
     }"
   >
     <main
+      ref="contentEl"
       class="w-[min(1000px,95dvw)] mx-auto pt-[40px] flex flex-col gap-y-8 items-center px-2 md:px-0"
     >
       <!-- list -->
@@ -15,7 +16,17 @@
         class="flex flex-col md:flex-row gap-6 text-[var(--primary-text-color)]"
       >
         <!-- card -->
-        <li v-for="i in 3" :key="i" class="bg-white rounded-lg p-5 space-y-2">
+        <li
+          v-for="c in 3"
+          :key="c"
+          class="bg-white rounded-lg p-5 space-y-2 animate__animated opacity-0"
+          :class="{
+            animate__fadeInUp: applyAnimation,
+          }"
+          :style="{
+            animationDelay: `${0.3 + c * 0.2}s`,
+          }"
+        >
           <header class="flex items-center gap-x-3">
             <img
               src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -30,7 +41,17 @@
               </h1>
               <p class="opacity-60">Web Designer</p>
               <span class="text-[10px] text-yellow-500">
-                <span v-for="i in 5" :key="i">
+                <span
+                  v-for="s in 5"
+                  :key="s"
+                  class="opacity-0 animate__animated"
+                  :class="{
+                    animate__bounceIn: applyAnimation,
+                  }"
+                  :style="{
+                    animationDelay: `${0.7 + c * 0.2 + s * 0.1}s`,
+                  }"
+                >
                   <Icon name="mdi:star" />
                 </span>
               </span>
@@ -45,7 +66,12 @@
         </li>
       </ul>
       <!-- page -->
-      <span>
+      <span
+        class="opacity-0 animate__animated animate__delay-1s"
+        :class="{
+          animate__fadeInDown: applyAnimation,
+        }"
+      >
         <Icon name="mdi:chevron-left" />
         <span> 3/15 </span>
         <Icon name="mdi:chevron-right" />
@@ -54,6 +80,22 @@
   </Demo1UtilsBasicSection>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+// AOS
+const applyAnimation = ref(false);
+const contentEl = ref<HTMLElement | null>(null);
+useIntersectionObserver(
+  contentEl,
+  ([entry], observer) => {
+    if (entry.isIntersecting) {
+      applyAnimation.value = true;
+      observer.unobserve(entry.target);
+    }
+  },
+  {
+    threshold: 0.1,
+  }
+);
+</script>
 
 <style></style>

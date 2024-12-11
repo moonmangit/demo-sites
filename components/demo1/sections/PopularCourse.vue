@@ -7,14 +7,20 @@
       variant: 'colorful',
     }"
   >
-    <main class="container mx-auto my-8 mb-3">
+    <main ref="contentEl" class="container mx-auto my-8 mb-3">
       <ul
         class="gap-x-5 gap-y-3 px-4 flex flex-col md:flex-row justify-center text-xs"
       >
         <li
           v-for="i in 3"
           :key="i"
-          class="bg-white text-[var(--primary-text-color)] whitespace-nowrap flex flex-col max-h-[350px] md:max-h-[300px] overflow-hidden p-2 rounded-xl gap-y-5 md:gap-y-2 w-[min(300px,100%)] md:w-[250px] mx-auto md:mx-0"
+          class="bg-white text-[var(--primary-text-color)] whitespace-nowrap flex flex-col max-h-[350px] md:max-h-[300px] overflow-hidden p-2 rounded-xl gap-y-5 md:gap-y-2 w-[min(300px,100%)] md:w-[250px] mx-auto md:mx-0 animate__animated opacity-0"
+          :class="{
+            animate__fadeInUp: applyAnimation,
+          }"
+          :style="{
+            animationDelay: `${0.2 * i}s`,
+          }"
         >
           <div class="overflow-hidden rounded-lg">
             <img
@@ -66,6 +72,22 @@
   </Demo1UtilsBasicSection>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const applyAnimation = ref(false);
+
+const contentEl = ref<HTMLElement | null>(null);
+useIntersectionObserver(
+  contentEl,
+  ([entry], observer) => {
+    if (entry.isIntersecting) {
+      applyAnimation.value = true;
+      observer.unobserve(entry.target);
+    }
+  },
+  {
+    threshold: 0.1,
+  }
+);
+</script>
 
 <style></style>
