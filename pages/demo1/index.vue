@@ -3,7 +3,19 @@
     id="demo1"
     class="demo1 bg-[var(--primary-color)] text-[var(--primary-text-color)] font-demo1 overflow-hidden overflow-y-auto"
   >
-    <Demo1SectionsNav />
+    <!-- navigation -->
+    <Demo1SectionsNav
+      @select-menu="handleSelectMenu($event)"
+      @unselect-menu="handleUnselectMenu"
+      ref="navEl"
+    />
+    <Demo1SectionsNavMega
+      ref="navMegaEl"
+      :index="menuActiveIndex"
+      :active="menuMegaActive"
+      @select-menu="handleSelectMenu($event)"
+      @unselect-menu="handleUnselectMenu"
+    />
     <Demo1SectionsNavOverlay />
 
     <Demo1SectionsHero />
@@ -19,7 +31,47 @@
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import Nav from "@/components/demo1/sections/Nav.vue";
+import NavMega from "@/components/demo1/sections/NavMega.vue";
+
+// mega menus
+const menuActiveIndex = ref(-1);
+const menuMegaActive = ref(false);
+const unActiveTimer = ref<NodeJS.Timeout | null>(null);
+const unComponentTimer = ref<NodeJS.Timeout | null>(null);
+const navEl = ref<InstanceType<typeof Nav> | null>(null);
+const navMegaEl = ref<InstanceType<typeof NavMega> | null>(null);
+function handleSelectMenu(idx: number) {
+  if (unComponentTimer.value) {
+    clearTimeout(unComponentTimer.value);
+    unComponentTimer.value = null;
+  }
+  if (unActiveTimer.value) {
+    clearTimeout(unActiveTimer.value);
+    unActiveTimer.value = null;
+  }
+  menuMegaActive.value = true;
+  menuActiveIndex.value = idx;
+  if (navMegaEl.value?.tipEl) {
+    const menuEl = navEl.value?.menuEls[idx];
+    if (!menuEl) return;
+    navMegaEl.value.tipEl.style.left = `${
+      menuEl.offsetLeft +
+      menuEl.clientWidth / 2 -
+      navMegaEl.value.tipEl.clientWidth / 2
+    }px`;
+  }
+}
+function handleUnselectMenu() {
+  unActiveTimer.value = setTimeout(() => {
+    menuMegaActive.value = false;
+    unComponentTimer.value = setTimeout(() => {
+      menuActiveIndex.value = -1;
+    }, 500);
+  }, 300);
+}
+</script>
 
 <style scoped>
 .demo1 {
