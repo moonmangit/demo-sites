@@ -4,7 +4,7 @@
       <nav
         v-if="nav.$state.active"
         ref="navEl"
-        class="fixed inset-y-4 right-0 w-[min(80dvw,350px)] bg-gradient text-[var(--primary-accent-2)] z-40 overflow-y-auto overflow-hidden rounded-l-3xl"
+        class="fixed inset-y-4 right-0 w-[min(80dvw,350px)] bg-gradient text-[var(--primary-accent-2)] z-[101] overflow-y-auto overflow-hidden rounded-l-3xl"
       >
         <div class="flex flex-col h-full">
           <header class="flex justify-between items-center px-8 py-5">
@@ -61,7 +61,7 @@
     <Transition name="backdrop">
       <div
         v-if="nav.$state.active"
-        class="fixed inset-0 bg-gradient-to-r from-[rgba(var(--primary-text-color-rgb),0.9)] to-[rgba(var(--primary-accent-2-rgb),0.6)] z-30"
+        class="fixed inset-0 bg-gradient-to-r from-[rgba(var(--primary-text-color-rgb),0.9)] to-[rgba(var(--primary-accent-2-rgb),0.6)] z-[100]"
       />
     </Transition>
   </div>

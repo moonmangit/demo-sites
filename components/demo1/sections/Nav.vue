@@ -49,7 +49,7 @@
       />
     </section>
     <button
-      class="flex md:hidden text-2xl animate__animated animate__fadeInRight"
+      class="flex lg:hidden text-2xl animate__animated animate__fadeInRight"
       :style="{
         animationDelay: `${overallDelay}s`,
       }"
