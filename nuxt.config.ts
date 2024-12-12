@@ -16,10 +16,11 @@ export default defineNuxtConfig({
   googleFonts: {
     families: {
       Poppins: [400, 500, 600, 700],
+      "Hepta Slab": [400, 500, 600, 700],
     },
   },
 
   icon: {
-    provider: 'iconify'
-  }
+    provider: "iconify",
+  },
 });
