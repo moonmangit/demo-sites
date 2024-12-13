@@ -1,29 +1,26 @@
+import MenuCourse from "@/components/demo1/menus/Course.vue";
+import MenuTeacher from "@/components/demo1/menus/Teacher.vue";
+import MenuOffer from "@/components/demo1/menus/Offer.vue";
+import MenuContact from "@/components/demo1/menus/Contact.vue";
+
 export const Demo1Menus: {
   label: string;
   component: any;
 }[] = [
   {
     label: "Courses",
-    component: defineAsyncComponent(
-      () => import("@/components/demo1/menus/Course.vue")
-    ),
+    component: MenuCourse,
   },
   {
     label: "Teachers",
-    component: defineAsyncComponent(
-      () => import("@/components/demo1/menus/Teacher.vue")
-    ),
+    component: MenuTeacher,
   },
   {
     label: "Offers",
-    component: defineAsyncComponent(
-      () => import("@/components/demo1/menus/Offer.vue")
-    ),
+    component: MenuOffer,
   },
   {
     label: "Contact",
-    component: defineAsyncComponent(
-      () => import("@/components/demo1/menus/Contact.vue")
-    ),
+    component: MenuContact,
   },
 ];
