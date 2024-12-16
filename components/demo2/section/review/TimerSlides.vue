@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mask-center">
     <ul
       class="flex gap-4 items-center duration-300"
       :style="{
@@ -60,4 +60,14 @@ onMounted(() => {
 });
 </script>
 
-<style></style>
+<style scoped>
+.mask-center {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black,
+    transparent
+  );
+  mask-image: linear-gradient(to right, transparent, black, transparent);
+}
+</style>
