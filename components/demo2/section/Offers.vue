@@ -72,6 +72,7 @@
 </template>
 
 <script lang="ts" setup>
+// animation
 const contentEl = ref<HTMLElement | null>(null);
 const { applyAnimation } = useApplyAnimation(contentEl, {
   clearAnimationAfterMs: 3000,

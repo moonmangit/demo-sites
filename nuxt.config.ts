@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     "nuxt-marquee",
     "@vueuse/nuxt",
     "@pinia/nuxt",
+    "nuxt-swiper",
   ],
 
   googleFonts: {

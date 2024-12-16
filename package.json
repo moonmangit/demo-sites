@@ -19,6 +19,7 @@
     "nuxt": "^3.14.1592",
     "nuxt-icon": "^1.0.0-beta.7",
     "nuxt-marquee": "^1.0.4",
+    "nuxt-swiper": "^2.0.0",
     "pinia": "^2.3.0",
     "vue": "latest",
     "vue-router": "latest"
