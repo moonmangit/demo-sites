@@ -1,9 +1,11 @@
 <template>
-  <section class="section-container">
-    <header class="section-title text-center mx-auto">
-      See how we solve problems,
-      <span class="sub"> right on target </span>
-    </header>
+  <section ref="contentEl" class="section-container">
+    <Demo2UtilDuotoneTitle
+      title="See how we solve problems,"
+      subtitle=" right on target"
+      class="w-4/5 lg:w-1/2 mx-auto text-center !items-center"
+      :apply-animation="applyAnimation"
+    />
     <main
       class="mt-10 bg-[rgba(var(--p-black-rgb),0.1)] rounded-xl flex flex-col md:flex-row container mx-auto"
     >
@@ -31,6 +33,7 @@
         />
       </section>
     </main>
+
     <footer class="mt-4 flex justify-center">
       <ul class="flex gap-x-4">
         <li v-for="i in 3" :key="i" class="flex-1 min-w-[200px] space-y-2">
@@ -51,6 +54,12 @@
   </section>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const contentEl = ref<HTMLElement | null>(null);
+const { applyAnimation } = useApplyAnimation(contentEl, {
+  threshold: 0.2,
+  clearAnimationAfterMs: 2000,
+});
+</script>
 
 <style></style>

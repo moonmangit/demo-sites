@@ -32,15 +32,7 @@
           class="text-3xl md:text-5xl lg:text-7xl my-5 md:my-10 line-clamp-2 animate__animated animate__fadeIn"
         >
           <div class="relative">
-            <div
-              v-for="i in 2"
-              :key="i"
-              :class="{
-                absolute: i === 1,
-                'opacity-0 pointer-events-none': i === 2,
-              }"
-              class="animate__animated animate__fadeInLeft"
-            >
+            <div class="animate__animated animate__fadeInLeft">
               <b class="text-gradient"> New Energy </b>
               <br />
               <span>for the Future</span>
@@ -68,12 +60,24 @@
           class="flex items-center justify-evenly flex-wrap flex-row h-full px-[30px] lg:px-[50px] gap-x-3 lg:gap-x-[40px] border border-white rounded-t-3xl"
         >
           <div
-            v-for="label in ['6 mil', '315', '120K']"
-            :key="label"
-            class="flex flex-col gap-y-1 py-[15px] md:py-[25px] flex-1 min-w-fit"
+            v-for="(amount, idx) in ['6', '315', '120']"
+            :key="idx"
+            class="flex flex-col gap-y-1 py-[15px] md:py-[25px] flex-1 min-w-fit overflow-hidden"
           >
-            <h1 class="text-2xl lg:text-4xl">{{ label }}</h1>
-            <p class="line-clamp-2 text-sm max-w-[20ch]">
+            <h1
+              class="text-2xl lg:text-4xl animate__animated animate__fadeInLeft"
+              :style="{
+                animationDelay: `${0.3 + idx * 0.2}s`,
+              }"
+            >
+              <span class="to-animate-amount">{{ amount }}</span> mil
+            </h1>
+            <p
+              class="line-clamp-2 text-sm max-w-[20ch] animate__animated animate__fadeInDown overflow-hidden"
+              :style="{
+                animationDelay: `${1 + idx * 0.2}s`,
+              }"
+            >
               The company's annual net income
             </p>
           </div>
@@ -100,7 +104,20 @@
   </section>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const { $anime } = useNuxtApp();
+
+onMounted(() => {
+  $anime({
+    targets: ".to-animate-amount",
+    innerHTML: (el: any) => {
+      return [0, el.innerHTML];
+    },
+    round: 1,
+    delay: $anime.stagger(500),
+  });
+});
+</script>
 
 <style scoped>
 .opening-clip-path-animate {

@@ -1,7 +1,6 @@
 <template>
   <div
-    id="demo2"
-    class="font-demo2-sans w-screen h-screen overflow-y-auto overflow-x-hidden text-[rgba(var(--p-black-rgb),0.9)]"
+    class="font-demo2-sans overflow-y-auto overflow-x-hidden text-[rgba(var(--p-black-rgb),0.9)]"
   >
     <Demo2SectionNav />
     <Demo2SectionHero />
@@ -14,14 +13,20 @@
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+onMounted(() => {
+  document.getElementById("__nuxt")?.classList.add("demo2-container");
+});
+</script>
 
 <style>
-#demo2 {
+.demo2-container {
   --p-green: #00d47e;
   --p-green-rgb: 0, 212, 126;
   --p-black: #1e1e1e;
   --p-black-rgb: 30, 30, 30;
+
+  @apply font-demo2-sans;
 
   .text-gradient {
     background: linear-gradient(to right, white 90%, transparent);
@@ -47,6 +52,9 @@
     }
     &.btn--white-border {
       @apply bg-white border;
+    }
+    &.btn--transparent-border {
+      @apply bg-transparent border;
     }
     &.btn--white {
       @apply bg-white text-[rgba(var(--p-black-rgb),0.8)];
