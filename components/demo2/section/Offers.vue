@@ -7,7 +7,7 @@
     }"
   >
     <Demo2UtilDuotoneTitle
-      class="w-4/5 lg:w-1/2 mx-auto text-center !items-center"
+      class="w-full lg:w-1/2 mx-auto text-center !items-center"
       title="We offer quality,"
       subtitle=" with the best materials and service"
       :apply-animation="applyAnimation"
@@ -19,12 +19,13 @@
       }"
     >
       <li
-        v-for="i in 6"
+        v-for="(offer, i) in offersContent.items"
         :key="i"
         class="p-5 flex flex-col items-center md:items-start text-center md:text-start gap-y-2"
         :class="{
-          'border-b': i + (1 % 3) !== 0,
-          'border-r': i % 3 !== 0,
+          'border-b': i < offersContent.items.length - 1,
+          'lg:border-r': i % 3 !== 2,
+          'md:border-r': i % 2 !== 1,
         }"
       >
         <div
@@ -36,10 +37,7 @@
             animationDelay: `${0.4 + i * 0.2}s`,
           }"
         >
-          <Icon
-            name="material-symbols:stacks-rounded"
-            class="text-[var(--p-green)] text-3xl"
-          />
+          <Icon :name="offer.iconName" class="text-[var(--p-green)] text-3xl" />
         </div>
         <h1
           class="text-xl font-medium animate__animated opacity-0"
@@ -50,10 +48,10 @@
             animationDelay: `${0.7 + i * 0.2}s`,
           }"
         >
-          Layered Security
+          {{ offer.title }}
         </h1>
         <p
-          class="line-clamp-2 text-sm animate__animated opacity-0"
+          class="line-clamp-2 text-sm animate__animated opacity-0 text-[rgba(var(--p-black-rgb),0.6)]"
           :class="{
             animate__fadeIn: applyAnimation,
           }"
@@ -61,10 +59,7 @@
             animationDelay: `${0.8 + i * 0.2}s`,
           }"
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, atque
-          accusamus accusantium perspiciatis repudiandae sed vitae ipsam dicta
-          omnis dolore veniam nisi quaerat recusandae dolorum at id. Libero,
-          quibusdam repellat!
+          {{ offer.description }}
         </p>
       </li>
     </ul>
@@ -72,6 +67,8 @@
 </template>
 
 <script lang="ts" setup>
+import { offersContent } from "~/assets/src/content";
+
 // animation
 const contentEl = ref<HTMLElement | null>(null);
 const { applyAnimation } = useApplyAnimation(contentEl, {

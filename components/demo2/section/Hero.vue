@@ -60,7 +60,7 @@
           class="flex items-center justify-evenly flex-wrap flex-row h-full px-[30px] lg:px-[50px] gap-x-3 lg:gap-x-[40px] border border-white rounded-t-3xl"
         >
           <div
-            v-for="(amount, idx) in ['6', '315', '120']"
+            v-for="(detail, idx) in heroContent.detail"
             :key="idx"
             class="flex flex-col gap-y-1 py-[15px] md:py-[25px] flex-1 min-w-fit overflow-hidden"
           >
@@ -70,7 +70,8 @@
                 animationDelay: `${0.3 + idx * 0.2}s`,
               }"
             >
-              <span class="to-animate-amount">{{ amount }}</span> mil
+              <span class="to-animate-amount">{{ detail.amount }}</span>
+              {{ detail.unit }}
             </h1>
             <p
               class="line-clamp-2 text-sm max-w-[20ch] animate__animated animate__fadeInDown overflow-hidden"
@@ -78,7 +79,7 @@
                 animationDelay: `${1 + idx * 0.2}s`,
               }"
             >
-              The company's annual net income
+              {{ detail.detail }}
             </p>
           </div>
         </main>
@@ -105,6 +106,8 @@
 </template>
 
 <script lang="ts" setup>
+import { heroContent } from "~/assets/src/content";
+
 const { $anime } = useNuxtApp();
 
 onMounted(() => {

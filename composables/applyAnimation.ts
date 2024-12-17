@@ -30,6 +30,7 @@ export const useApplyAnimation = (
     },
     {
       threshold: options?.threshold || 0.2,
+      immediate: true,
     }
   );
 

@@ -22,7 +22,7 @@
           <Icon name="mdi:arrow-top-right" />
         </button>
       </section>
-      <ul class="grid grid-cols-2 gap-3">
+      <ul class="grid grid-cols-2 gap-3 order-[2] lg:order-1">
         <li
           v-for="i in 4"
           :key="i"

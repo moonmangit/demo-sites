@@ -12,7 +12,7 @@
         v-for="(slideContent, idx) in slideContents"
         :key="slideContent.id"
         :content="slideContent"
-        :active="activeSlideIndex === idx"
+        :active="activeSlideIndex === idx && active"
         :direction="slideDirection"
       />
     </swiper-container>
@@ -20,7 +20,7 @@
     <footer class="mt-4 flex justify-center">
       <Demo2SectionReviewTimerSlides
         :contents="slideContents"
-        :active-index="activeSlideIndex"
+        :active-index="active ? activeSlideIndex : -1"
         @timeout="handleTimeout"
         @change-slide="handleChangeSlide"
       />
@@ -30,6 +30,8 @@
 
 <script lang="ts" setup>
 import type { ReviewSlideContent } from "./Slide.vue";
+
+const active = ref(false);
 
 // slides
 const swiperContainerRef = ref<any>(null);
@@ -119,6 +121,18 @@ const slideContents: (ReviewSlideContent & { id: number; iconName: string })[] =
   ];
 
 const contentEl = ref<HTMLElement | null>(null);
+useIntersectionObserver(
+  contentEl,
+  ([entry], observer) => {
+    if (entry.isIntersecting) {
+      active.value = true;
+      observer.unobserve(entry.target);
+    }
+  },
+  {
+    threshold: 0.2,
+  }
+);
 const { applyAnimation } = useApplyAnimation(contentEl, {
   threshold: 0.2,
   clearAnimationAfterMs: 2000,

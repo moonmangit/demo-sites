@@ -39,7 +39,7 @@ onMounted(() => {
   }
 
   .section-container {
-    @apply px-6 lg:px-10 py-[100px];
+    @apply px-6 lg:px-10 py-[50px] lg:py-[100px];
   }
   .section-title {
     @apply text-3xl;
