@@ -43,22 +43,22 @@
             {{ label }}
           </a>
           <div class="flex flex-wrap gap-2 px-4">
-            <button
-              class="btn btn--green capitalize animate__animated animate__fadeInUp"
+            <Demo2UtilButton
+              title="Get in touch"
+              class="animate__animated animate__fadeInUp"
               :style="{
                 animationDelay: `${0.2 + 5 * 0.1}s`,
               }"
-            >
-              get in touch
-            </button>
-            <button
-              class="btn btn--transparent-border capitalize animate__animated animate__fadeInUp"
+            />
+            <Demo2UtilButton
+              title="log in"
+              variant="secondary"
+              theme="dark"
+              class="animate__animated animate__fadeInUp"
               :style="{
                 animationDelay: `${0.2 + 6 * 0.1}s`,
               }"
-            >
-              log in
-            </button>
+            />
           </div>
         </main>
         <footer class="p-2 text-center text-white/40 font-light">
