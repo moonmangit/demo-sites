@@ -64,7 +64,8 @@
         </section>
         <!-- mobile nav toggler  -->
         <button
-          class="text-2xl flex lg:hidden text-[rgba(var(--p-black-rgb),0.6)] duration-150 p-2 rounded-xl animate__animated animate__fadeInLeft"
+          @click.prevent="navStore.open"
+          class="text-2xl flex lg:hidden text-[rgba(var(--p-black-rgb),0.6)] p-2 rounded-xl animate__animated animate__fadeInLeft duration-300"
           :style="{ animationDelay: `${BASE_ANIMATE_DELAY_SEC}s` }"
           :class="{
             '!text-white': isAdapt,
@@ -79,6 +80,8 @@
 
 <script lang="ts" setup>
 const BASE_ANIMATE_DELAY_SEC = 0.3;
+
+const navStore = useMyDemo2NavStore();
 
 // scroll adaptive nav
 const isAdapt = ref(false);

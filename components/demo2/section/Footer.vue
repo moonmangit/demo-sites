@@ -40,7 +40,7 @@
         </section>
         <!-- links -->
         <section>
-          <ul class="flex gap-x-6 capitalize">
+          <ul class="flex gap-6 capitalize flex-wrap">
             <li
               v-for="(link, idx) in [
                 'home',

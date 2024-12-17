@@ -2,7 +2,11 @@
   <div
     class="font-demo2-sans overflow-y-auto overflow-x-hidden text-[rgba(var(--p-black-rgb),0.9)]"
   >
+    <!-- navigation -->
     <Demo2SectionNav />
+    <Demo2SectionNavMobile />
+
+    <!-- contents -->
     <Demo2SectionHero />
     <Demo2SectionSlogan />
     <Demo2SectionPartner />
