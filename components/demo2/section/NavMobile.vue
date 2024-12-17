@@ -13,7 +13,10 @@
             />
             <h1 class="font-bold">Xurya</h1>
           </section>
-          <button class="text-2xl p-2 flex" @click.prevent="navStore.close">
+          <button
+            class="text-2xl p-2 flex animate__animated animate__rotateIn"
+            @click.prevent="navStore.close"
+          >
             <Icon name="mdi:close" />
           </button>
         </header>
@@ -28,7 +31,10 @@
               'contact',
             ]"
             :key="idx"
-            class="p-5 text-2xl capitalize font-light"
+            class="p-5 text-2xl capitalize font-light animate__animated animate__fadeInDown"
+            :style="{
+              animationDelay: `${0.2 + idx * 0.1}s`,
+            }"
             :class="{
               'bg-gradient-to-l from-[rgba(var(--p-green-rgb),0.4)] text-white':
                 idx === 0,
@@ -37,8 +43,20 @@
             {{ label }}
           </a>
           <div class="flex flex-wrap gap-2 px-4">
-            <button class="btn btn--green capitalize">get in touch</button>
-            <button class="btn btn--transparent-border capitalize">
+            <button
+              class="btn btn--green capitalize animate__animated animate__fadeInUp"
+              :style="{
+                animationDelay: `${0.2 + 5 * 0.1}s`,
+              }"
+            >
+              get in touch
+            </button>
+            <button
+              class="btn btn--transparent-border capitalize animate__animated animate__fadeInUp"
+              :style="{
+                animationDelay: `${0.2 + 6 * 0.1}s`,
+              }"
+            >
               log in
             </button>
           </div>
@@ -71,11 +89,11 @@ const navStore = useMyDemo2NavStore();
 }
 .content-enter-from,
 .content-leave-to {
-  clip-path: circle(0% at 50% -10%);
+  clip-path: circle(0% at 110% -10%);
 }
 .content-enter-to,
 .content-leave-from {
-  clip-path: circle(150% at 50% -10%);
+  clip-path: circle(170% at 110% -10%);
 }
 
 /* backdrop - transition animation */
