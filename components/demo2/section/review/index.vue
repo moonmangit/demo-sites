@@ -107,7 +107,7 @@ const slideContents: (ReviewSlideContent & { id: number; iconName: string })[] =
     },
     {
       id: 4,
-      title: "Murray Inc",
+      title: "Blanda, Jast and Dare",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo delectus quae iusto nobis tenetur repellat? Numquam nostrum exercitationem ullam ea debitis delectus deserunt rerum, illum et, asperiores esse, dicta fugit?",
       imageUrl:

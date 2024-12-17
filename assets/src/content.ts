@@ -7,7 +7,7 @@ export const heroContent = {
     },
     {
       amount: 315,
-      unit: "KW",
+      unit: "kW",
       detail: "Energy Consumption",
     },
     {

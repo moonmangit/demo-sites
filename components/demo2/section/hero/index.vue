@@ -4,18 +4,7 @@
     class="this h-[90dvh] duration-300 p-4 container mx-auto opening-clip-path-animate"
   >
     <div class="hero relative w-full h-full animate__animated animate__fadeIn">
-      <div class="relative w-full h-full rounded-3xl overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1615630859219-0459703c34e6?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          class="w-full h-full object-cover absolute inset-0"
-        />
-        <img
-          src="https://images.unsplash.com/photo-1615630859219-0459703c34e6?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          class="w-full h-full object-cover opacity-0 pointer-events-none"
-          alt=""
-        />
-        <div class="absolute inset-0 bg-gradient-to-tr from-gray-800/90"></div>
-      </div>
+      <Demo2SectionHeroImageFader />
       <!-- title -->
       <section
         class="absolute inset-y-0 left-0 text-white flex flex-col justify-start lg:justify-center p-8 px-8 lg:px-10"

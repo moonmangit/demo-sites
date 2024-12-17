@@ -29,7 +29,8 @@
         >
           {{ content.description }}
         </p>
-        <button
+        <Demo2UtilButton
+          title="View case study"
           class="btn btn--green w-fit animate__animated opacity-0 duration-300"
           :class="{
             animate__fadeInDown: applyAnimation,
@@ -37,9 +38,7 @@
           :style="{
             animationDelay: '0.5s',
           }"
-        >
-          View case study
-        </button>
+        />
         <p
           class="font-semibold md:!mt-auto animate__animated animate__faster"
           :class="{
